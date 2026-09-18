@@ -6,9 +6,9 @@
         <div class="reg__header-icon-wrap">
           <span class="material-symbols-outlined reg__header-icon">how_to_reg</span>
         </div>
-        <h2 class="reg__title text-headline-md">سجّل بياناتك للدخول في سحب العمرة</h2>
+        <h2 class="reg__title text-headline-md">سجّل بياناتك للحصول على جائزة العمرة</h2>
         <p class="reg__sub text-body-sm">
-          أدخل بياناتك المسجلة لدى البنك ليتم ربط معاملاتك وتذاكرك بالسحب تلقائياً وبشكل دوري.
+          أدخل بياناتك المسجلة لدى البنك ليتم ربط معاملاتك وتذاكرك بالجائزة تلقائياً وبشكل دوري.
         </p>
       </div>
 
@@ -82,7 +82,7 @@
         <!-- Product Type -->
         <div class="reg__field">
           <label class="reg__label text-label-md">
-            نوع المعاملة أو المنتج الأساسي للدخول في السحب
+            نوع المعاملة أو المنتج الأساسي للحصول على الجائزة
             <span class="reg__required">*</span>
           </label>
           <div class="reg__product-grid">
@@ -110,7 +110,7 @@
             <input type="checkbox" class="reg__terms-check" required [checked]="formData().agreedToTerms"
               (change)="updateField('agreedToTerms', !formData().agreedToTerms)" />
             <span class="text-body-sm reg__terms-text">
-              أوافق على الشروط والأحكام المنظمة لسحب رحلات العمرة الكبرى وأصرح لبنك المشرق مصر باحتساب معاملاتي المؤهلة
+              أوافق على الشروط والأحكام المنظمة لجائزة رحلات العمرة الكبرى وأصرح لبنك المشرق مصر باحتساب معاملاتي المؤهلة
               تلقائياً.
             </span>
           </label>
@@ -121,10 +121,10 @@
           <button id="submit-btn" type="submit" class="reg__submit-btn text-title-lg" [disabled]="isSubmitting()">
             @if (isSubmitting()) {
             <span class="material-symbols-outlined reg__spinner">progress_activity</span>
-            <span>جارٍ تأكيد تسجيلك في السحب...</span>
+            <span>جارٍ تأكيد تسجيلك للحصول على الجائزة...</span>
             } @else {
             <span class="material-symbols-outlined">how_to_vote</span>
-            <span>تأكيد التسجيل والدخول في السحب</span>
+            <span>تأكيد التسجيل للحصول على الجائزة</span>
             }
           </button>
         </div>
@@ -142,10 +142,10 @@
       <div class="reg__success">
         <div class="reg__success-header text-title-md">
           <span class="material-symbols-outlined reg__success-icon">check_circle</span>
-          <span>تم تسجيلك في السحب بنجاح!</span>
+          <span>تم تسجيلك للحصول على الجائزة بنجاح!</span>
         </div>
         <p class="text-body-sm reg__success-body">
-          تم احتساب فرصك الحالية وسنرسل لك رسالة نصية (SMS) بتفاصيل تذاكر السحب المؤكدة. بالتوفيق والقبول بإذن الله.
+          تم احتساب فرصك الحالية وسنرسل لك رسالة نصية (SMS) بتفاصيل التذاكر المؤكدة. بالتوفيق والقبول بإذن الله.
         </p>
       </div>
       }

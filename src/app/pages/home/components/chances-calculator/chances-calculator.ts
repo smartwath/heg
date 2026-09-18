@@ -28,7 +28,7 @@ export class ChancesCalculator {
     const c = this.totalChances();
     if (c >= 50) return 'فرصة ممتازة جداً (فئة بلاتينية)';
     if (c >= 20) return 'فرصة مرتفعة (فئة ذهبية)';
-    return 'فرصة جيدة للتأهل بالسحب';
+    return 'فرصة جيدة للتأهل للحصول على الجائزة';
   });
 
   readonly formattedAmount = computed(() =>

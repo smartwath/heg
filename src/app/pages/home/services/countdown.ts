@@ -9,16 +9,36 @@ export interface CountdownTime {
 
 @Injectable({ providedIn: 'root' })
 export class CountdownService implements OnDestroy {
-  // Target: April 30 2025 00:00:00 EET (UTC+2)
-  private readonly targetDate = new Date('2025-04-30T00:00:00+02:00');
+  private targetDate: Date;
 
   readonly time = signal<CountdownTime>({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
   private intervalId: ReturnType<typeof setInterval> | null = null;
 
   constructor() {
+    this.targetDate = this.initTargetDate();
     this.tick();
     this.intervalId = setInterval(() => this.tick(), 1000);
+  }
+
+  private initTargetDate(): Date {
+    const STORAGE_KEY = 'umrah_timer_target_date';
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        return new Date(stored);
+      }
+      
+      const target = new Date();
+      target.setDate(target.getDate() + 7);
+      localStorage.setItem(STORAGE_KEY, target.toISOString());
+      return target;
+    } catch {
+      // Fallback for SSR or if localStorage is restricted
+      const target = new Date();
+      target.setDate(target.getDate() + 7);
+      return target;
+    }
   }
 
   private tick(): void {
