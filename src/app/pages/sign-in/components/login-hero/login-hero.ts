@@ -1,4 +1,5 @@
 import { Component, signal, computed, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { LoginForm } from '../../models/login-form';
@@ -12,6 +13,7 @@ import { LoginForm } from '../../models/login-form';
 })
 export class LoginHero {
   private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
 
   readonly isLoading  = this.auth.isLoading;
   readonly showPass   = signal(false);
@@ -42,6 +44,9 @@ export class LoginHero {
   }
 
   async onSubmit(): Promise<void> {
-    await this.auth.login(this.form().username, this.form().password);
+    const success = await this.auth.login(this.form().username, this.form().password);
+    if (success) {
+      this.router.navigate(['/login/otp']);
+    }
   }
 }

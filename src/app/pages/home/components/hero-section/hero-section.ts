@@ -1,9 +1,10 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CountdownService } from '../../services/countdown';
 
 @Component({
   selector: 'app-hero-section',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, signal, computed, OnDestroy, QueryList, ViewChildren, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed, OnDestroy, QueryList, ViewChildren, ElementRef, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,6 +16,7 @@ export class OtpVerification implements OnDestroy {
   readonly timeLeft = signal(105);
   readonly isSubmitting = signal(false);
 
+  private readonly router = inject(Router);
   private timerInterval: any;
 
   readonly formattedTime = computed(() => {
@@ -99,7 +101,7 @@ export class OtpVerification implements OnDestroy {
     this.isSubmitting.set(true);
     setTimeout(() => {
       this.isSubmitting.set(false);
-      alert('تم تأكيد الدخول بنجاح! سيتم توجيهك إلى لوحة التحكم.');
+      this.router.navigate(['/login/status']);
     }, 1200);
   }
 }
