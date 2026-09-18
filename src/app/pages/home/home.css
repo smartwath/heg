@@ -1,0 +1,7 @@
+.home-page {
+  width: 100%;
+  padding-top: 80px; /* header height */
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+}

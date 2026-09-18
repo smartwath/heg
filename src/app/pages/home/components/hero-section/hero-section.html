@@ -1,0 +1,149 @@
+<section class="hero">
+  <!-- Ambient halos -->
+  <div class="hero__halo hero__halo--right"></div>
+  <div class="hero__halo hero__halo--left"></div>
+
+  <div class="hero__inner">
+    <!-- Breadcrumb Pill -->
+    <div class="hero__pill-row">
+      <span class="hero__pill">
+        <span class="hero__pill-dot"></span>
+        سحب رحلات العمرة الكبرى
+      </span>
+      <span class="hero__pill-sep">•</span>
+      <span class="hero__pill-sub">خطوة تقربك لبيت الله الحرام</span>
+    </div>
+
+    <!-- Asymmetric Grid -->
+    <div class="hero__grid">
+      <!-- Content Column -->
+      <div class="hero__content">
+        <h1 class="hero__headline text-headline-xl">
+          عمرتك علينا.. <br>
+          <span class="hero__headline-accent">رحلة إيمانية شاملة</span> مع كل معاملة بنكية
+        </h1>
+
+        <p class="hero__body text-body-lg">
+          استخدم بطاقات بنك المشرق مصر الائتمانية والخصم المباشر، أو افتح حساباً جديداً وادخل السحب على
+          <strong class="hero__body-strong">50 رحلة عمرة لشخصين</strong>
+          شاملة تذاكر الطيران، أفخم فنادق 5 نجوم المطلة على الحرم، ومصاريف جيب إضافية.
+        </p>
+
+        <!-- Badges -->
+        <div class="hero__badges">
+          <div class="hero__badge">
+            <span class="material-symbols-outlined hero__badge-icon hero__badge-icon--mosque" style="font-variation-settings: 'FILL' 1;">mosque</span>
+            <span class="text-label-lg">50 رحلة مجانية كاملة</span>
+          </div>
+          <div class="hero__badge">
+            <span class="material-symbols-outlined hero__badge-icon hero__badge-icon--group">group</span>
+            <span class="text-label-lg">شاملة الفائز ومرافقه</span>
+          </div>
+          <div class="hero__badge">
+            <span class="material-symbols-outlined hero__badge-icon hero__badge-icon--hotel">hotel</span>
+            <span class="text-label-lg">فنادق 5 نجوم مطلة على الكعبة</span>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href="#register-form" class="hero__cta-primary">
+            <span>سجّل بياناتك في السحب الآن</span>
+            <span class="material-symbols-outlined hero__cta-arrow">arrow_back</span>
+          </a>
+          <a href="#calculator" class="hero__cta-secondary">
+            <span class="material-symbols-outlined hero__cta-calc-icon">calculate</span>
+            <span>احسب فرصك في الفوز</span>
+          </a>
+        </div>
+
+        <!-- Countdown -->
+        <div class="hero__countdown">
+          <div class="hero__countdown-info">
+            <div class="hero__countdown-icon-wrap">
+              <span class="material-symbols-outlined hero__countdown-alarm">alarm</span>
+            </div>
+            <div class="hero__countdown-labels">
+              <span class="hero__countdown-sub text-label-sm">متبقي على موعد السحب الأول</span>
+              <span class="hero__countdown-title text-title-md">سحب الدفعة الأولى (25 رحلة)</span>
+            </div>
+          </div>
+          <div class="hero__digits" dir="ltr">
+            <div class="hero__digit-block">
+              <span class="hero__digit text-headline-sm">{{ time().days }}</span>
+              <span class="hero__digit-label text-label-sm">يوم</span>
+            </div>
+            <span class="hero__digit-sep">:</span>
+            <div class="hero__digit-block">
+              <span class="hero__digit text-headline-sm">{{ time().hours }}</span>
+              <span class="hero__digit-label text-label-sm">ساعة</span>
+            </div>
+            <span class="hero__digit-sep">:</span>
+            <div class="hero__digit-block">
+              <span class="hero__digit text-headline-sm">{{ time().minutes }}</span>
+              <span class="hero__digit-label text-label-sm">دقيقة</span>
+            </div>
+            <span class="hero__digit-sep">:</span>
+            <div class="hero__digit-block">
+              <span class="hero__digit hero__digit--accent text-headline-sm">{{ time().seconds }}</span>
+              <span class="hero__digit-label text-label-sm">ثانية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Card Column -->
+      <div class="hero__card-col">
+        <div class="hero__card">
+          <div class="hero__card-img-wrap">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC5ms412xvRxfGnnI1YSzuABfuGVuCHaRhrGDU1kWTU-ULDJTxz3WpZa2TJYAOyeZCyvjG-RAqbJo_cTde40xv2BicK69KsawiMTEURDxh1SLwRlYh7P9K-JifclyFpoRf08NSuWBpEURZoqSiiMl58_ZfWSdUWzyE8jUHyVg71HlyCuONZhEAVqNydIaxOMjsPphqLEtEDrL8otVmRppSZzJs6Du_DBViTNaPKzh8nPPZsIbH5QvQ5g"
+              alt="الحرم المكي الشريف والكعبة المشرفة"
+              class="hero__card-img"
+            />
+            <div class="hero__card-overlay"></div>
+
+            <!-- Status Pill -->
+            <div class="hero__card-status">
+              <span class="material-symbols-outlined hero__card-status-icon" style="font-variation-settings: 'FILL' 1;">stars</span>
+              <span class="text-label-md">إشراف مصرفي كامل وموثق</span>
+            </div>
+
+            <!-- Bottom Info -->
+            <div class="hero__card-info">
+              <div class="hero__card-flight">
+                <span class="material-symbols-outlined hero__card-flight-icon">flight_takeoff</span>
+                <span class="text-label-lg hero__card-flight-text">تذاكر طيران مباشرة ذهاباً وإياباً</span>
+              </div>
+              <p class="hero__card-desc text-body-sm">
+                عش روعة الطواف والسكينة في مكة المكرمة وزيارة المسجد النبوي الشريف في المدينة المنورة مع خدمات ضيافة استثنائية.
+              </p>
+              <div class="hero__card-footer-row">
+                <span>الناقل الجوي: الخطوط السعودية / مصر للطيران</span>
+                <span class="hero__card-vip">باقة VIP الذهبية</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Metric Footer -->
+          <div class="hero__card-metric">
+            <div class="hero__card-metric-inner">
+              <div class="hero__card-metric-avatar">
+                <span class="material-symbols-outlined hero__card-metric-icon">how_to_reg</span>
+              </div>
+              <div class="hero__card-metric-text">
+                <span class="hero__card-metric-count text-title-md">أكثر من 18,450 عميل</span>
+                <span class="hero__card-metric-sub text-label-sm">سجّلوا في السحب خلال هذا الأسبوع</span>
+              </div>
+            </div>
+            <div class="hero__card-avatars">
+              <div class="hero__mini-avatar hero__mini-avatar--sec">م.ع</div>
+              <div class="hero__mini-avatar hero__mini-avatar--pri">س.أ</div>
+              <div class="hero__mini-avatar hero__mini-avatar--ter">ك.ن</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+<div class="smodal-backdrop">
+  <div class="smodal">
+    <div class="smodal__header">
+      <div class="smodal__header-title-wrap">
+        <span class="material-symbols-outlined smodal__header-icon">verified</span>
+        <h3 class="smodal__title text-headline-sm">تأكيد قبول الجائزة والمتابعة</h3>
+      </div>
+      <button type="button" class="smodal__close-btn" (click)="onClose.emit()">
+        <span class="material-symbols-outlined smodal__close-icon">close</span>
+      </button>
+    </div>
+    
+    <div class="smodal__body">
+      <p class="smodal__desc text-body-md">
+        لقد قمت بتأكيد قبول باقة العمرة لشخصين باسم <strong>محمد أحمد محمود الشناوي</strong>.
+      </p>
+      
+      <div class="smodal__options-box">
+        <label class="smodal__label text-label-md">اختر موعد السفر المفضل:</label>
+        <div class="smodal__options">
+          <label class="smodal__option">
+            <input type="radio" name="season" class="smodal__radio" checked />
+            <span class="smodal__option-text text-body-sm">عمرة شهر رجب 1446هـ (يناير 2025)</span>
+          </label>
+          <label class="smodal__option">
+            <input type="radio" name="season" class="smodal__radio" />
+            <span class="smodal__option-text text-body-sm">عمرة شهر شعبان 1446هـ (فبراير 2025)</span>
+          </label>
+          <label class="smodal__option">
+            <input type="radio" name="season" class="smodal__radio" />
+            <span class="smodal__option-text text-body-sm">عمرة شهر رمضان المبارك 1446هـ (العشر الأواخر)</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="smodal__input-group">
+        <label class="smodal__label smodal__label--dim text-label-sm">رقم الهاتف لتأكيد موعد اللقاء:</label>
+        <input type="text" class="smodal__input text-title-md" value="+20 10 0293 8472" dir="ltr" />
+      </div>
+    </div>
+    
+    <div class="smodal__footer">
+      <button type="button" class="smodal__btn-cancel text-title-md" (click)="onClose.emit()" [disabled]="isSubmitting()">إلغاء</button>
+      <button type="button" class="smodal__btn-submit text-title-md" (click)="onSubmit()" [disabled]="isSubmitting()">
+        @if(isSubmitting()) {
+          <span class="material-symbols-outlined smodal__spinner">sync</span>
+          <span>جاري الحفظ...</span>
+        } @else {
+          <span>إرسال وتأكيد الطلب</span>
+        }
+      </button>
+    </div>
+  </div>
+</div>

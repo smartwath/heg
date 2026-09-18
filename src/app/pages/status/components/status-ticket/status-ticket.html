@@ -1,0 +1,110 @@
+<div class="sticket">
+  <div class="sticket__accent-bar"></div>
+  
+  <div class="sticket__content">
+    
+    <div class="sticket__header">
+      <div class="sticket__header-left">
+        <div class="sticket__header-icon-wrap">
+          <span class="material-symbols-outlined sticket__header-icon">flight_takeoff</span>
+        </div>
+        <div>
+          <span class="sticket__title text-headline-sm">وثيقة تذكرة العمرة الذهبية (VIP Pass)</span>
+          <span class="sticket__subtitle text-label-md">إصدار حصري ومعتمد من بنك المشرق مصر لعام 2025</span>
+        </div>
+      </div>
+      <div class="sticket__status-badge">
+        <span class="sticket__status-dot"></span>
+        <span class="text-label-sm">الحالة: مؤهل للتسجيل الفوري</span>
+      </div>
+    </div>
+    
+    <div class="sticket__details-grid">
+      <div class="sticket__detail-item">
+        <span class="sticket__detail-label text-label-sm">الاسم الكامل للفائز الأساسي</span>
+        <span class="sticket__detail-val text-title-lg">محمد أحمد محمود الشناوي</span>
+      </div>
+      <div class="sticket__detail-item">
+        <span class="sticket__detail-label text-label-sm">المستفيد المرافق</span>
+        <span class="sticket__detail-val sticket__detail-val--primary text-title-lg">متاح إضافة مرافق (تأكيد لاحق)</span>
+      </div>
+      <div class="sticket__detail-item">
+        <span class="sticket__detail-label text-label-sm">خط سير الرحلة المقترح</span>
+        <span class="sticket__detail-val text-title-md">مطار القاهرة (CAI) ⟵ مطار جدة (JED) ⟵ المدينة (MED) ⟵ القاهرة</span>
+      </div>
+      <div class="sticket__detail-item">
+        <span class="sticket__detail-label text-label-sm">الموسم المتاح للاختيار</span>
+        <span class="sticket__detail-val text-title-md">موسم رجب، شعبان أو رمضان المبارك 1446هـ</span>
+      </div>
+    </div>
+    
+    <div class="sticket__features">
+      <span class="sticket__features-title text-title-md">
+        <span class="material-symbols-outlined sticket__features-icon">stars</span>
+        مزايا الباقة الفاخرة المشمولة بالكامل:
+      </span>
+      
+      <div class="sticket__features-grid">
+        <div class="sticket__feature-card">
+          <div class="sticket__ficon-wrap sticket__ficon-wrap--primary">
+            <span class="material-symbols-outlined sticket__ficon">airplane_ticket</span>
+          </div>
+          <div>
+            <span class="sticket__f-title text-title-md">تذاكر طيران مباشرة فاخرة</span>
+            <p class="sticket__f-desc text-body-sm">رحلات طيران مجدولة مباشرة القاهرة / جدة / المدينة المنورة لشخصين شاملة الوزن الإضافي ومقاعد مميزة.</p>
+          </div>
+        </div>
+        
+        <div class="sticket__feature-card">
+          <div class="sticket__ficon-wrap sticket__ficon-wrap--tertiary">
+            <span class="material-symbols-outlined sticket__ficon">hotel</span>
+          </div>
+          <div>
+            <span class="sticket__f-title text-title-md">إقامة 5 نجوم مطلة على الحرمين</span>
+            <p class="sticket__f-desc text-body-sm">إقامة كاملة لمدة 10 أيام في أفخم فنادق برج الساعة بمكة وجوار المسجد النبوي مع بوفيه إفطار وعشاء فاخر.</p>
+          </div>
+        </div>
+        
+        <div class="sticket__feature-card">
+          <div class="sticket__ficon-wrap sticket__ficon-wrap--primary-container">
+            <span class="material-symbols-outlined sticket__ficon">payments</span>
+          </div>
+          <div>
+            <span class="sticket__f-title text-title-md">منحة نقدية 15,000 جنيه</span>
+            <p class="sticket__f-desc text-body-sm">تودع نقداً ومباشرة في حسابك المصرفي قبل السفر لتغطية مصاريف الهدايا وماء زمزم ومشترياتكم الشخصية.</p>
+          </div>
+        </div>
+        
+        <div class="sticket__feature-card">
+          <div class="sticket__ficon-wrap sticket__ficon-wrap--secondary">
+            <span class="material-symbols-outlined sticket__ficon">airport_shuttle</span>
+          </div>
+          <div>
+            <span class="sticket__f-title text-title-md">تنقلات خاصة وتأمين شامل</span>
+            <p class="sticket__f-desc text-body-sm">استقبال VIP بسيارات حديثة خاصة، مرافقة مرشد ديني متخصص، وتأمين صحي وسفر دولي مغطى بالكامل.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sticket__actions">
+      <button 
+        type="button" 
+        class="sticket__btn-confirm text-title-md" 
+        (click)="onConfirm.emit()"
+      >
+        <span class="material-symbols-outlined sticket__btn-icon">how_to_reg</span>
+        <span>تأكيد واستكمال بيانات المسافرين الآن</span>
+      </button>
+      
+      <button 
+        type="button" 
+        class="sticket__btn-download text-title-md"
+      >
+        <span class="material-symbols-outlined sticket__btn-icon text-[20px]">download</span>
+        <span>تحميل وثيقة الفوز (PDF)</span>
+      </button>
+    </div>
+    
+  </div>
+</div>

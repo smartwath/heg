@@ -1,0 +1,182 @@
+.smodal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(45, 49, 51, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.smodal {
+  width: 100%;
+  max-width: 32rem;
+  background-color: var(--color-surface-container-lowest);
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.smodal__header {
+  padding: 1.5rem;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.smodal__header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.smodal__header-icon { font-size: 24px; }
+.smodal__title { margin: 0; font-weight: 700; }
+
+.smodal__close-btn {
+  padding: 0.25rem;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--color-on-primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms ease;
+}
+
+.smodal__close-btn:hover { background-color: rgba(255, 255, 255, 0.2); }
+.smodal__close-icon { font-size: 20px; }
+
+.smodal__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.smodal__desc {
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.smodal__options-box {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-surface-container-low);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.smodal__label {
+  display: block;
+  color: var(--color-on-surface);
+}
+
+.smodal__label--dim { color: var(--color-secondary); }
+
+.smodal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.smodal__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-surface-container-lowest);
+  cursor: pointer;
+}
+
+.smodal__radio {
+  accent-color: var(--color-primary-container);
+  width: 1rem;
+  height: 1rem;
+}
+
+.smodal__option-text {
+  color: var(--color-on-surface);
+}
+
+.smodal__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.smodal__input {
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
+  border: none;
+  outline: none;
+  transition: box-shadow 150ms ease;
+}
+
+.smodal__input:focus {
+  box-shadow: 0 0 0 2px var(--color-primary-container);
+}
+
+.smodal__footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid var(--color-surface-container);
+}
+
+.smodal__btn-cancel {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.smodal__btn-cancel:hover { background-color: var(--color-surface-container); }
+.smodal__btn-cancel:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.smodal__btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 150ms ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.smodal__btn-submit:hover:not(:disabled) { filter: brightness(1.1); }
+.smodal__btn-submit:disabled { opacity: 0.8; cursor: not-allowed; }
+
+.smodal__spinner {
+  font-size: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

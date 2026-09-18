@@ -1,0 +1,150 @@
+.alogin-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: var(--color-surface-container-low);
+  background-image: radial-gradient(circle at center, var(--color-surface-container) 0%, var(--color-surface-container-lowest) 100%);
+}
+
+.alogin-card {
+  width: 100%;
+  max-width: 28rem;
+  background-color: var(--color-surface-container-lowest);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.alogin-header {
+  padding: 2rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.alogin-icon-wrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.alogin-icon { font-size: 32px; }
+
+.alogin-title {
+  color: var(--color-on-surface);
+  margin: 0;
+  font-weight: 700;
+}
+
+.alogin-subtitle {
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.alogin-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+  margin-bottom: 1.5rem;
+}
+
+.alogin-form {
+  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.alogin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.alogin-label {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+
+.alogin-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.alogin-input-icon {
+  position: absolute;
+  right: 1rem;
+  color: var(--color-secondary);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.alogin-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem; /* right padding for rtl icon */
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.alogin-input:focus {
+  border-color: var(--color-primary-container);
+  box-shadow: 0 0 0 3px rgba(255, 94, 0, 0.15);
+}
+
+.alogin-submit {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary);
+  border: none;
+  cursor: pointer;
+  transition: all 150ms ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(255, 94, 0, 0.2);
+}
+
+.alogin-submit:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.alogin-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.alogin-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.alogin-footer {
+  padding: 1rem;
+  background-color: var(--color-surface-container);
+  text-align: center;
+}

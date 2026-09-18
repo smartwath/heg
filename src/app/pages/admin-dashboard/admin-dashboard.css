@@ -1,0 +1,200 @@
+.adash {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+}
+
+.adash-header {
+  height: 4.5rem;
+  background-color: var(--color-surface-container-lowest);
+  border-bottom: 1px solid var(--color-surface-container);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.adash-header__left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.adash-header__icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adash-header__title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.adash-header__logout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--color-error);
+  border: 1px solid var(--color-error-container);
+  cursor: pointer;
+  transition: all 150ms ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.adash-header__logout:hover {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+
+.adash-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.adash-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.adash-card__header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adash-card__badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface-variant);
+}
+
+.adash-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.adash-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+}
+
+.adash-table th {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-secondary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-surface-container);
+  white-space: nowrap;
+}
+
+.adash-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-surface-container);
+  vertical-align: middle;
+}
+
+.adash-table__row:hover {
+  background-color: rgba(247, 249, 251, 0.5); /* background / 50 */
+}
+
+.adash-table__empty {
+  text-align: center;
+  padding: 3rem !important;
+  color: var(--color-secondary);
+}
+
+/* Status Badges */
+.adash-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.adash-status--pending {
+  background-color: var(--color-surface-container-high);
+  color: var(--color-on-surface-variant);
+}
+
+.adash-status--accepted {
+  background-color: rgba(166, 59, 0, 0.1); /* primary tint */
+  color: var(--color-primary);
+}
+
+.adash-status--rejected {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+
+/* Action Buttons */
+.adash-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adash-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+  font-weight: 600;
+}
+
+.adash-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.adash-btn--accept {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary-fixed);
+}
+
+.adash-btn--accept:hover:not(:disabled) {
+  background-color: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+.adash-btn--reject {
+  background-color: transparent;
+  color: var(--color-error);
+  border-color: var(--color-error-container);
+}
+
+.adash-btn--reject:hover:not(:disabled) {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}

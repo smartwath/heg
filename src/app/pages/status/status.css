@@ -1,0 +1,80 @@
+.status-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Will be offset by header/footer in layout but good as base */
+  padding-bottom: 4rem;
+  background-color: var(--color-background);
+}
+
+/* Background Confetti/Shapes */
+.status__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  overflow: hidden;
+}
+
+.status__bg-shape1 {
+  position: absolute;
+  top: -2.5rem;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  color: rgba(255, 181, 153, 0.3); /* primary-fixed-dim / 30 */
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.status__bg-shape2 {
+  position: absolute;
+  top: 5rem;
+  left: 2.5rem;
+  width: 18rem;
+  height: 18rem;
+  color: rgba(255, 224, 136, 0.2); /* tertiary-fixed / 20 */
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+/* Inner Container */
+.status__inner {
+  position: relative;
+  z-index: 10;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Main Grid */
+.status__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .status__grid {
+    grid-template-columns: 8fr 4fr; /* lg:col-span-8 and lg:col-span-4 */
+  }
+}
+
+.status__col-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.status__col-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

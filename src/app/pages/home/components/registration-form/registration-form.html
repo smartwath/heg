@@ -1,0 +1,154 @@
+<section class="reg" id="register-form">
+  <div class="reg__inner">
+    <div class="reg__card">
+      <!-- Header -->
+      <div class="reg__header">
+        <div class="reg__header-icon-wrap">
+          <span class="material-symbols-outlined reg__header-icon">how_to_reg</span>
+        </div>
+        <h2 class="reg__title text-headline-md">سجّل بياناتك للدخول في سحب العمرة</h2>
+        <p class="reg__sub text-body-sm">
+          أدخل بياناتك المسجلة لدى البنك ليتم ربط معاملاتك وتذاكرك بالسحب تلقائياً وبشكل دوري.
+        </p>
+      </div>
+
+      <!-- Form -->
+      @if (!isSuccess()) {
+      <form class="reg__form" (ngSubmit)="onSubmit()" #regForm="ngForm">
+        <div class="reg__fields-grid">
+          <!-- Full Name -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="fullName">
+              الاسم بالكامل كما في بطاقة الرقم القومي
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__input-wrap">
+              <input id="fullName" type="text" class="reg__input" placeholder="مثال: أحمد محمد إبراهيم محمود" required
+                [ngModel]="formData().fullName" (ngModelChange)="updateField('fullName', $event)" name="fullName" />
+              <span class="material-symbols-outlined reg__input-icon">badge</span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="phone">
+              رقم الهاتف المحمول (المسجل لدى البنك)
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__phone-wrap">
+              <span class="reg__phone-prefix" dir="ltr">+20</span>
+              <input id="phone" type="tel" class="reg__phone-input" placeholder="01012345678" pattern="[0-9]{11}"
+                required dir="ltr" [ngModel]="formData().phone" (ngModelChange)="updateField('phone', $event)"
+                name="phone" />
+              <span class="material-symbols-outlined reg__phone-icon">phone_iphone</span>
+            </div>
+          </div>
+
+          <!-- National ID -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="nationalId">
+              الرقم القومي (14 رقماً)
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__input-wrap">
+              <input id="nationalId" type="text" class="reg__input" placeholder="29501010000000" pattern="[0-9]{14}"
+                maxlength="14" required dir="ltr" [ngModel]="formData().nationalId"
+                (ngModelChange)="updateField('nationalId', $event)" name="nationalId" />
+              <span class="material-symbols-outlined reg__input-icon">pin</span>
+            </div>
+          </div>
+
+          <!-- Client Status -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md">
+              هل أنت عميل حالي لبنك المشرق مصر؟
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__radio-grid">
+              <label class="reg__radio-label">
+                <input type="radio" name="isExistingClient" value="yes" class="reg__radio"
+                  [checked]="formData().isExistingClient === 'yes'" (change)="updateField('isExistingClient', 'yes')" />
+                <span class="text-body-sm">نعم، عميل حالي</span>
+              </label>
+              <label class="reg__radio-label">
+                <input type="radio" name="isExistingClient" value="no" class="reg__radio"
+                  [checked]="formData().isExistingClient === 'no'" (change)="updateField('isExistingClient', 'no')" />
+                <span class="text-body-sm">عميل جديد (أرغب بفتح حساب)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Type -->
+        <div class="reg__field">
+          <label class="reg__label text-label-md">
+            نوع المعاملة أو المنتج الأساسي للدخول في السحب
+            <span class="reg__required">*</span>
+          </label>
+          <div class="reg__product-grid">
+            <label class="reg__product-label">
+              <input type="radio" name="product" value="cards" class="reg__radio"
+                [checked]="formData().product === 'cards'" (change)="updateField('product', 'cards')" />
+              <span class="text-body-sm">بطاقة ائتمانية / خصم</span>
+            </label>
+            <label class="reg__product-label">
+              <input type="radio" name="product" value="account" class="reg__radio"
+                [checked]="formData().product === 'account'" (change)="updateField('product', 'account')" />
+              <span class="text-body-sm">حساب المشرق نيو / توفير</span>
+            </label>
+            <label class="reg__product-label">
+              <input type="radio" name="product" value="salary" class="reg__radio"
+                [checked]="formData().product === 'salary'" (change)="updateField('product', 'salary')" />
+              <span class="text-body-sm">تحويل راتب / شهادات ادخار</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div class="reg__terms">
+          <label class="reg__terms-label">
+            <input type="checkbox" class="reg__terms-check" required [checked]="formData().agreedToTerms"
+              (change)="updateField('agreedToTerms', !formData().agreedToTerms)" />
+            <span class="text-body-sm reg__terms-text">
+              أوافق على الشروط والأحكام المنظمة لسحب رحلات العمرة الكبرى وأصرح لبنك المشرق مصر باحتساب معاملاتي المؤهلة
+              تلقائياً.
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <div class="reg__submit">
+          <button id="submit-btn" type="submit" class="reg__submit-btn text-title-lg" [disabled]="isSubmitting()">
+            @if (isSubmitting()) {
+            <span class="material-symbols-outlined reg__spinner">progress_activity</span>
+            <span>جارٍ تأكيد تسجيلك في السحب...</span>
+            } @else {
+            <span class="material-symbols-outlined">how_to_vote</span>
+            <span>تأكيد التسجيل والدخول في السحب</span>
+            }
+          </button>
+        </div>
+
+        <!-- Security Note -->
+        <div class="reg__security">
+          <span class="material-symbols-outlined reg__security-icon">shield</span>
+          <span class="text-label-sm">بياناتك مشفرة ومحمية وفق أعلى معايير الأمن السيبراني للبنك المركزي المصري</span>
+        </div>
+      </form>
+      }
+
+      <!-- Success State -->
+      @if (isSuccess()) {
+      <div class="reg__success">
+        <div class="reg__success-header text-title-md">
+          <span class="material-symbols-outlined reg__success-icon">check_circle</span>
+          <span>تم تسجيلك في السحب بنجاح!</span>
+        </div>
+        <p class="text-body-sm reg__success-body">
+          تم احتساب فرصك الحالية وسنرسل لك رسالة نصية (SMS) بتفاصيل تذاكر السحب المؤكدة. بالتوفيق والقبول بإذن الله.
+        </p>
+      </div>
+      }
+    </div>
+  </div>
+</section>

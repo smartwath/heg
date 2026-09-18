@@ -1,0 +1,179 @@
+.schedule {
+  width: 100%;
+  padding: 2.5rem 0;
+  background-color: var(--color-surface-container-lowest);
+}
+
+.schedule__inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Timetable */
+.schedule__timetable { margin-bottom: 3.5rem; }
+
+.schedule__section-header {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+}
+
+.schedule__label {
+  display: block;
+  color: var(--color-primary-container);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.schedule__title {
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.schedule__draws-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .schedule__draws-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.schedule__draw-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--color-surface-container-low);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.schedule__draw-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.schedule__draw-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.schedule__draw-badge--1 {
+  background-color: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+.schedule__draw-badge--2 {
+  background-color: var(--color-secondary-fixed);
+  color: var(--color-on-secondary-fixed);
+}
+
+.schedule__draw-date { color: var(--color-secondary); }
+
+.schedule__draw-title {
+  color: var(--color-on-surface);
+  margin: 0 0 0.5rem;
+}
+
+.schedule__draw-body {
+  color: var(--color-secondary);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.schedule__draw-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-surface-variant);
+}
+
+.schedule__draw-live    { color: var(--color-primary-container); font-weight: 600; }
+.schedule__draw-contact { color: var(--color-tertiary); font-weight: 600; }
+
+/* FAQ */
+.schedule__faq { max-width: 48rem; margin: 0 auto; }
+
+.schedule__faq-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.schedule__faq-title {
+  color: var(--color-on-surface);
+  margin: 0 0 0.5rem;
+}
+
+.schedule__faq-sub {
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.schedule__faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule__faq-item {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background-color: var(--color-surface-container-low);
+  transition: background-color 200ms ease;
+}
+
+.schedule__faq-item[open] {
+  background-color: var(--color-surface);
+}
+
+.schedule__faq-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-on-surface);
+  cursor: pointer;
+  list-style: none;
+  gap: 1rem;
+}
+
+.schedule__faq-summary::-webkit-details-marker { display: none; }
+
+.schedule__faq-chevron {
+  font-size: 22px;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  transition: transform 200ms ease;
+}
+
+.schedule__faq-item[open] .schedule__faq-chevron {
+  transform: rotate(180deg);
+}
+
+.schedule__faq-body {
+  margin: 0.75rem 0 0;
+  color: var(--color-secondary);
+  line-height: 1.7;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-surface-variant);
+}
+
+/* Disclaimer */
+.schedule__disclaimer {
+  margin-top: 2.5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-surface-container);
+  text-align: center;
+  color: var(--color-secondary);
+  line-height: 1.65;
+}

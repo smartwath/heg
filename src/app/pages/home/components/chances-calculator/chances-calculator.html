@@ -1,0 +1,113 @@
+<section class="calc" id="calculator">
+  <div class="calc__inner">
+    <div class="calc__card">
+      <!-- Card Header -->
+      <div class="calc__card-header">
+        <div>
+          <div class="calc__header-label">
+            <span class="material-symbols-outlined calc__header-icon">calculate</span>
+            <span class="text-title-md calc__header-label-text">حاسبة السحب التفاعلية</span>
+          </div>
+          <h2 class="calc__title text-headline-md">كم فرصة يمكنك جمعها للفوز بالعمرة؟</h2>
+          <p class="calc__sub text-body-sm">حرّك المؤشر وحدد حجم معاملاتك الشهرية لترى فرصتك التقديرية فوراً</p>
+        </div>
+        <div class="calc__rate-badge">
+          <span class="material-symbols-outlined calc__rate-icon">toll</span>
+          <div>
+            <span class="calc__rate-label text-label-sm">معدل الاحتساب الحالي</span>
+            <span class="calc__rate-value text-title-md">1,000 ج.م = 1 فرصة سحب</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="calc__content-grid">
+        <!-- Inputs Column -->
+        <div class="calc__inputs">
+          <!-- Slider -->
+          <div class="calc__slider-group">
+            <div class="calc__slider-top">
+              <label for="spend-slider" class="calc__slider-label text-title-md">مشترياتك ومعاملاتك الشهرية بالبطاقات</label>
+              <div class="calc__slider-amount">
+                <span class="calc__slider-amount-num text-headline-sm">{{ formattedAmount() }}</span>
+                <span class="calc__slider-amount-unit text-label-md">جنيه مصري</span>
+              </div>
+            </div>
+            <input
+              id="spend-slider"
+              type="range"
+              class="calc__slider"
+              min="1000"
+              max="100000"
+              step="1000"
+              [value]="spendAmount()"
+              (input)="onSpendChange($any($event.target).value)"
+            />
+            <div class="calc__slider-ticks">
+              <span>1,000 ج.م</span>
+              <span>50,000 ج.م</span>
+              <span>100,000 ج.م+</span>
+            </div>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="calc__extras">
+            <span class="calc__extras-label text-label-md">عوامل مضاعفة الفرص الإضافية:</span>
+            <div class="calc__extras-grid">
+              <label class="calc__check-label">
+                <input
+                  type="checkbox"
+                  id="check-new"
+                  class="calc__checkbox"
+                  [checked]="newClient()"
+                  (change)="newClient.set(!newClient())"
+                />
+                <span class="text-body-sm">عميل جديد / فتح حساب (+5 فرص)</span>
+              </label>
+              <label class="calc__check-label">
+                <input
+                  type="checkbox"
+                  id="check-salary"
+                  class="calc__checkbox"
+                  [checked]="salaryCert()"
+                  (change)="salaryCert.set(!salaryCert())"
+                />
+                <span class="text-body-sm">تحويل راتب أو شهادة (+15 فرصة)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="calc__output">
+          <span class="calc__output-label text-label-md">إجمالي فرصك المسجلة في السحب</span>
+          <div class="calc__output-amount">
+            <span class="calc__output-num text-headline-xl">{{ totalChances() }}</span>
+            <span class="calc__output-unit text-title-lg">تذكرة سحب</span>
+          </div>
+          <div class="calc__output-badge">
+            <span class="material-symbols-outlined calc__output-badge-icon">stars</span>
+            <span class="text-label-md">{{ badgeText() }}</span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="calc__progress-track">
+            <div
+              class="calc__progress-fill"
+              [style.width.%]="progressWidth()"
+            ></div>
+          </div>
+
+          <p class="calc__output-note text-label-sm">
+            كلما زادت استخداماتك لبطاقات المشرق، كلما ارتفعت احتمالية فوزك بواحدة من الـ 50 رحلة عمرة لشخصين.
+          </p>
+
+          <a href="#register-form" class="calc__output-btn text-title-md">
+            <span>تأكيد تسجيل هذه الفرص</span>
+            <span class="material-symbols-outlined calc__output-btn-icon">verified_user</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

