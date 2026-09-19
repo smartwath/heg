@@ -7,7 +7,6 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AdminAuthService {
   private readonly TOKEN_KEY = 'admin_token';
-  private readonly TOKEN_EXPIRY_KEY = 'admin_token_expiry';
   private readonly authApi = inject(AuthApiService);
 
   async login(credentials: any): Promise<boolean> {
@@ -15,9 +14,9 @@ export class AdminAuthService {
       const response = await lastValueFrom(
         this.authApi.userLogin(credentials)
       );
-      
+
       if (response && response.token) {
-        this.setSession(response.token, response.expiresIn || 60);
+        localStorage.setItem(this.TOKEN_KEY, response.token);
         return true;
       }
       return false;
@@ -27,31 +26,37 @@ export class AdminAuthService {
     }
   }
 
-  private setSession(token: string, expiresInMinutes: number) {
-    localStorage.setItem(this.TOKEN_KEY, token);
-    const expiryTime = new Date().getTime() + expiresInMinutes * 60 * 1000;
-    localStorage.setItem(this.TOKEN_EXPIRY_KEY, expiryTime.toString());
-  }
-
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
-    localStorage.removeItem(this.TOKEN_EXPIRY_KEY);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem(this.TOKEN_KEY);
-    const expiryString = localStorage.getItem(this.TOKEN_EXPIRY_KEY);
+    const token = this.getToken();
+    if (!token) return false;
 
-    if (!token || !expiryString) {
-      return false;
-    }
+    try {
+      const payloadBase64 = token.split('.')[1];
+      if (!payloadBase64) return false;
 
-    const expiryTime = parseInt(expiryString, 10);
-    if (new Date().getTime() > expiryTime) {
+      const payload = JSON.parse(atob(payloadBase64));
+      const expSeconds = payload?.exp;
+
+      if (!expSeconds) return false;
+
+      const isExpired = Date.now() >= expSeconds * 1000;
+      if (isExpired) {
+        this.logout();
+        return false;
+      }
+
+      return true;
+    } catch {
       this.logout();
       return false;
     }
-
-    return true;
   }
 }
