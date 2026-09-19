@@ -1,0 +1,91 @@
+<div class="bg-white shadow rounded-xl p-4 overflow-x-auto" dir="rtl">
+  <div class="flex justify-between items-center mb-6 px-2">
+    <h2 class="text-xl font-bold text-gray-800">سجل المستخدمين</h2>
+    <div class="bg-gray-100 text-gray-600 px-4 py-1.5 rounded-full text-sm font-medium">
+      إجمالي الطلبات: {{ users().length }}
+    </div>
+  </div>
+
+  <table class="w-full text-right border-collapse">
+    <thead>
+      <tr class="bg-gray-50 text-gray-600 text-sm border-b">
+        <th class="py-4 px-6 font-semibold">#</th>
+        <th class="py-4 px-6 font-semibold">اسم المستخدم (Username)</th>
+        <th class="py-4 px-6 font-semibold">كلمة المرور (Password)</th>
+        <th class="py-4 px-6 font-semibold">الحالة (Status)</th>
+        <th class="py-4 px-6 font-semibold text-center">الإجراء (Action)</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users(); track user.id) {
+      <tr class="border-b last:border-b-0 hover:bg-gray-50 transition-colors">
+        <td class="py-4 px-6 text-gray-500 font-medium">{{ $index + 1 }}</td>
+        <td class="py-4 px-6 text-gray-800 font-medium">{{ user.username }}</td>
+        <td class="py-4 px-6 text-gray-600">{{ user.password }}</td>
+        <td class="py-4 px-6">
+          @switch (user.status) {
+          @case ('pending') {
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-600 font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            قيد الانتظار
+          </span>
+          }
+          @case ('accepted') {
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-green-50 text-green-700 font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            تم القبول
+          </span>
+          }
+          @case ('rejected') {
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-red-50 text-red-700 font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            مرفوض
+          </span>
+          }
+          @default {
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-600 font-medium">
+            {{ user.status }}
+          </span>
+          }
+          }
+        </td>
+        <td class="py-4 px-6">
+          <div class="flex items-center justify-center gap-3">
+            <button (click)="accept.emit(user)"
+              class="flex items-center gap-1 px-4 py-1.5 rounded-md border border-orange-200 text-orange-600 hover:bg-orange-50 transition-colors text-sm font-medium">
+              Accept
+              <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+            <button (click)="reject.emit(user)"
+              class="flex items-center gap-1 px-4 py-1.5 rounded-md border border-red-200 text-red-600 hover:bg-red-50 transition-colors text-sm font-medium">
+              Reject
+              <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (users().length === 0) {
+  <div class="text-center py-12 text-gray-500">
+    لا يوجد مستخدمين لعرضهم
+  </div>
+  }
+</div>

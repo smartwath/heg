@@ -14,4 +14,8 @@ export class ClientApiService {
   updateStatus(id: string, data: UpdateClientStatusRequest): Observable<Client> {
     return this.http.patch<Client>(`${this.baseUrl}/clients/${id}/status`, data);
   }
+
+  getAllClients(): Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.baseUrl}/clients/all`);
+  }
 }

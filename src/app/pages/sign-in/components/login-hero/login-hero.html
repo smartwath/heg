@@ -85,11 +85,11 @@
                 id="usernameInput"
                 type="text"
                 class="lhero__input"
-                placeholder="مثال: EG9023418 أو اسم المستخدم المعتمد"
+                placeholder="مثال: admin@mashreq.com"
                 required
-                [ngModel]="form().username"
-                (ngModelChange)="updateField('username', $event)"
-                name="username"
+                [ngModel]="form().email"
+                (ngModelChange)="updateField('email', $event)"
+                name="email"
               />
             </div>
             <div class="lhero__field-footer-row">

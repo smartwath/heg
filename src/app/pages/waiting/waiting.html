@@ -1,0 +1,103 @@
+@if (state() === 'waiting') {
+<div class="waiting-page waiting-page--waiting">
+  <!-- Ambient background blobs -->
+  <div class="waiting__bg" aria-hidden="true">
+    <div class="waiting__blob waiting__blob--1"></div>
+    <div class="waiting__blob waiting__blob--2"></div>
+    <div class="waiting__blob waiting__blob--3"></div>
+  </div>
+
+  <!-- Particle dots -->
+  <div class="waiting__particles" aria-hidden="true">
+    @for (dot of [1,2,3,4,5,6,7,8,9,10,11,12]; track dot) {
+    <div class="waiting__particle" [class]="'waiting__particle--' + dot"></div>
+    }
+  </div>
+
+  <!-- Main Content -->
+  <div class="waiting__content">
+    <!-- Animated Kaaba Icon Ring -->
+    <div class="waiting__icon-ring">
+      <div class="waiting__ring waiting__ring--outer"></div>
+      <div class="waiting__ring waiting__ring--middle"></div>
+      <div class="waiting__ring waiting__ring--inner"></div>
+      <div class="waiting__icon-center">
+        <span class="material-symbols-outlined waiting__kaaba-icon">mosque</span>
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="waiting__text-block">
+      <h1 class="waiting__title text-headline-sm">جارٍ مراجعة طلبك</h1>
+      <p class="waiting__subtitle text-body-md">
+        يقوم فريقنا الآن بمراجعة بياناتك والتحقق منها.
+        <br />
+        يُرجى الانتظار بضع لحظات…
+      </p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="waiting__progress-wrap" role="status" aria-label="انتظار الموافقة">
+      <div class="waiting__progress-track">
+        <div class="waiting__progress-fill"></div>
+      </div>
+      <p class="waiting__progress-label text-label-md">يرحى الانتظار</p>
+    </div>
+
+    <!-- Steps -->
+    <div class="waiting__steps">
+      <div class="waiting__step waiting__step--done">
+        <span class="material-symbols-outlined waiting__step-icon">check_circle</span>
+        <span class="text-label-md">تم التحقق من رقم الهاتف</span>
+      </div>
+      <div class="waiting__step waiting__step--active">
+        <span class="material-symbols-outlined waiting__step-icon">manage_accounts</span>
+        <span class="text-label-md">يقوم النظام بمراجعة البيانات...يرجى الانتظار</span>
+      </div>
+      <div class="waiting__step waiting__step--pending">
+        <span class="material-symbols-outlined waiting__step-icon">celebration</span>
+        <span class="text-label-md">استكمال رحلتك</span>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+@if (state() === 'rejected') {
+<div class="waiting-page waiting-page--rejected">
+  <!-- Background -->
+  <div class="waiting__bg waiting__bg--rejected" aria-hidden="true">
+    <div class="waiting__blob waiting__blob--r1"></div>
+    <div class="waiting__blob waiting__blob--r2"></div>
+  </div>
+
+  <!-- Rejected Content -->
+  <div class="waiting__content waiting__content--rejected">
+    <div class="waiting__rejected-icon-wrap">
+      <div class="waiting__rejected-ring"></div>
+      <span class="material-symbols-outlined waiting__rejected-icon">sentiment_dissatisfied</span>
+    </div>
+
+    <div class="waiting__text-block">
+      <h1 class="waiting__title waiting__title--rejected text-headline-sm">
+        عذراً، البيانات غير مطابقة
+      </h1>
+      <p class="waiting__subtitle text-body-md">
+        للأسف، البيانات التي أدخلتها غير صحيحة أو غير مطابقة لسجلاتنا.
+        <br />
+        يُرجى المحاولة مرة أخرى أو التواصل مع خدمة العملاء.
+      </p>
+    </div>
+
+    <button id="retry-login-btn" class="waiting__retry-btn text-title-md" type="button" (click)="retryLogin()">
+      <span class="material-symbols-outlined">refresh</span>
+      <span>إعادة المحاولة</span>
+    </button>
+
+    <p class="waiting__help text-body-sm">
+      تحتاج مساعدة؟
+      <a href="tel:+201234567890" class="waiting__help-link">تواصل معنا</a>
+    </p>
+  </div>
+</div>
+}

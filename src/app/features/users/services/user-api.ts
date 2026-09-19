@@ -14,5 +14,9 @@ export class UserApiService {
   getProfile(): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/users/profile`);
   }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/users/all`);
+  }
 }
 

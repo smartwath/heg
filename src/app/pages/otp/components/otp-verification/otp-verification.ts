@@ -1,6 +1,9 @@
 import { Component, ChangeDetectionStrategy, signal, computed, OnDestroy, QueryList, ViewChildren, ElementRef, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../../../environments/environment';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-otp-verification',
@@ -17,6 +20,7 @@ export class OtpVerification implements OnDestroy {
   readonly isSubmitting = signal(false);
 
   private readonly router = inject(Router);
+  private readonly http = inject(HttpClient);
   private timerInterval: any;
 
   readonly formattedTime = computed(() => {
@@ -61,7 +65,7 @@ export class OtpVerification implements OnDestroy {
     const input = event.target as HTMLInputElement;
     const val = input.value.replace(/[^0-9]/g, '');
     const char = val ? val.slice(-1) : '';
-    
+
     this.otpValues.update(arr => {
       const newArr = [...arr];
       newArr[index] = char;
@@ -97,11 +101,32 @@ export class OtpVerification implements OnDestroy {
     }
   }
 
-  onSubmit() {
+  onFocus(event: FocusEvent, index: number) {
+    const vals = this.otpValues();
+    const firstEmpty = vals.findIndex(v => v === '');
+    
+    if (firstEmpty !== -1 && index > firstEmpty) {
+      setTimeout(() => {
+        this.otpInputs.toArray()[firstEmpty]?.nativeElement.focus();
+      });
+    }
+  }
+
+  async onSubmit() {
     this.isSubmitting.set(true);
-    setTimeout(() => {
+    const otpCode = this.otpValues().join('');
+    const clientId = localStorage.getItem('pending_client_id') || '';
+
+    try {
+      await lastValueFrom(
+        this.http.post(`${environment.apiUrl}/otp/create`, { otp: otpCode, ClientId: clientId })
+      );
       this.isSubmitting.set(false);
-      this.router.navigate(['/login/status']);
-    }, 1200);
+      this.router.navigate(['/login/waiting'], { queryParams: { next: 'status' } });
+    } catch (error) {
+      console.error('OTP verification failed', error);
+      this.isSubmitting.set(false);
+      // Optional: Add error handling UI state
+    }
   }
 }

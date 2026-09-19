@@ -15,4 +15,5 @@ export interface AuthResponse {
   token: string;
   user?: any;
   client?: any;
+  expiresIn?: number;
 }

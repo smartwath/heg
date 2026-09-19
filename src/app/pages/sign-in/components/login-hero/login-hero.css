@@ -289,7 +289,7 @@
 
 .lhero__input-icon {
   position: absolute;
-  inset-inline-end: 1rem;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
@@ -300,8 +300,8 @@
 .lhero__input {
   width: 100%;
   height: 3rem;
-  padding-inline-end: 2.75rem;
-  padding-inline-start: 1rem;
+  padding-right: 2.75rem;
+  padding-left: 1rem;
   background-color: var(--color-surface-container-low);
   color: var(--color-on-surface);
   border: none;
@@ -310,6 +310,7 @@
   font-size: 16px;
   font-family: 'IBM Plex Sans', sans-serif;
   transition: background-color 200ms ease, box-shadow 200ms ease;
+  text-align: right;
 }
 
 .lhero__input:focus {
@@ -320,15 +321,16 @@
 .lhero__input::placeholder { color: rgba(91,65,55,0.5); }
 
 .lhero__input--with-action {
-  padding-inline-start: 3rem;
+  padding-left: 3.5rem;
 }
 
 .lhero__toggle-pass {
   position: absolute;
-  inset-inline-start: 0;
+  left: 0.25rem;
   top: 0;
   height: 100%;
-  padding-inline-start: 1rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   display: flex;
   align-items: center;
   background: none;

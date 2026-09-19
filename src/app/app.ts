@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class App {
   protected readonly title = signal('frontend');
 
-  constructor(private router: Router) {
-    if (this.router.url === '/') {
-      this.router.navigate(['/home']);
-    }
+  // constructor(private router: Router) {
+  //   if (this.router.url === '/') {
+  //     this.router.navigate(['/home']);
+  //   }
 
-  }
+  // }
 
 }

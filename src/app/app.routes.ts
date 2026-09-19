@@ -5,7 +5,9 @@ import { AdminLogin } from './pages/admin-login/admin-login';
 import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { Otp } from './pages/otp/otp';
 import { Status } from './pages/status/status';
+import { Waiting } from './pages/waiting/waiting';
 import { Layout } from './ui/layout/layout';
+import { adminAuthGuard } from './core/guards/admin-auth-guard';
 
 export const routes: Routes = [
     {
@@ -30,6 +32,10 @@ export const routes: Routes = [
                 component: Otp
             },
             {
+                path: "login/waiting",
+                component: Waiting
+            },
+            {
                 path: "login/status",
                 component: Status
             }
@@ -44,7 +50,8 @@ export const routes: Routes = [
             },
             {
                 path: "dashboard",
-                component: AdminDashboard
+                component: AdminDashboard,
+                canActivate: [adminAuthGuard]
             }
         ]
     }

@@ -1,11 +1,17 @@
-export interface Client {
+export interface ClientOtp {
   id: string;
-  name: string;
-  email: string;
-  phone?: string;
+  otp: string;
   status: string;
-  createdAt?: string;
-  updatedAt?: string;
+  clientId: string;
+}
+
+export interface Client {
+  ClientId?: string;
+  id?: string;
+  username?: string;
+  password?: string;
+  status: string;
+  otps?: ClientOtp[];
 }
 
 export interface UpdateClientStatusRequest {

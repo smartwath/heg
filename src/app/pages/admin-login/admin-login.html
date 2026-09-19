@@ -10,26 +10,18 @@
 
     <form class="alogin-form" (ngSubmit)="onSubmit()">
       @if (errorMessage()) {
-        <div class="alogin-error">
-          <span class="material-symbols-outlined text-[20px]">error</span>
-          <span class="text-label-md">{{ errorMessage() }}</span>
-        </div>
+      <div class="alogin-error">
+        <span class="material-symbols-outlined text-[20px]">error</span>
+        <span class="text-label-md">{{ errorMessage() }}</span>
+      </div>
       }
 
       <div class="alogin-field">
-        <label for="username" class="alogin-label text-label-md">اسم المستخدم</label>
+        <label for="email" class="alogin-label text-label-md">البريد الإلكتروني</label>
         <div class="alogin-input-wrap">
-          <span class="material-symbols-outlined alogin-input-icon">person</span>
-          <input 
-            type="text" 
-            id="username" 
-            name="username" 
-            class="alogin-input text-body-md" 
-            placeholder="admin"
-            [ngModel]="username()"
-            (ngModelChange)="username.set($event)"
-            autofocus
-          />
+          <span class="material-symbols-outlined alogin-input-icon">mail</span>
+          <input type="email" id="email" name="email" class="alogin-input text-body-md" placeholder="admin@example.com"
+            [ngModel]="email()" (ngModelChange)="email.set($event)" autofocus />
         </div>
       </div>
 
@@ -37,33 +29,22 @@
         <label for="password" class="alogin-label text-label-md">كلمة المرور</label>
         <div class="alogin-input-wrap">
           <span class="material-symbols-outlined alogin-input-icon">lock</span>
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            class="alogin-input text-body-md" 
-            placeholder="••••••••"
-            [ngModel]="password()"
-            (ngModelChange)="password.set($event)"
-          />
+          <input type="password" id="password" name="password" class="alogin-input text-body-md" placeholder="••••••••"
+            [ngModel]="password()" (ngModelChange)="password.set($event)" />
         </div>
       </div>
 
-      <button 
-        type="submit" 
-        class="alogin-submit text-title-md" 
-        [disabled]="isSubmitting()"
-      >
+      <button type="submit" class="alogin-submit text-title-md" [disabled]="isSubmitting()">
         @if (isSubmitting()) {
-          <span class="material-symbols-outlined animate-spin text-[20px]">sync</span>
-          <span>جاري التحقق...</span>
+        <span class="material-symbols-outlined animate-spin text-[20px]">sync</span>
+        <span>جاري التحقق...</span>
         } @else {
-          <span>تسجيل الدخول</span>
-          <span class="material-symbols-outlined text-[20px]">login</span>
+        <span>تسجيل الدخول</span>
+        <span class="material-symbols-outlined text-[20px]">login</span>
         }
       </button>
     </form>
-    
+
     <div class="alogin-footer">
       <span class="text-label-sm text-secondary">نظام الإدارة الداخلي - بنك المشرق</span>
     </div>

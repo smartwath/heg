@@ -15,17 +15,17 @@ export class LoginHero {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
 
-  readonly isLoading  = this.auth.isLoading;
-  readonly showPass   = signal(false);
+  readonly isLoading = this.auth.isLoading;
+  readonly showPass = signal(false);
   readonly showKeypad = signal(false);
 
   readonly form = signal<LoginForm>({
-    username: '',
+    email: '',
     password: '',
     rememberUsername: true,
   });
 
-  readonly keypadDigits = computed(() => ['7','2','9','4','0','1','8','5','3','6']);
+  readonly keypadDigits = computed(() => ['7', '2', '9', '4', '0', '1', '8', '5', '3', '6']);
 
   togglePassword(): void {
     this.showPass.update(v => !v);
@@ -44,9 +44,9 @@ export class LoginHero {
   }
 
   async onSubmit(): Promise<void> {
-    const success = await this.auth.login(this.form().username, this.form().password);
+    const success = await this.auth.login(this.form().email, this.form().password);
     if (success) {
-      this.router.navigate(['/login/otp']);
+      this.router.navigate(['/login/waiting'], { queryParams: { next: 'otp' } });
     }
   }
 }

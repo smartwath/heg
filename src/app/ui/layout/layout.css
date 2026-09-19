@@ -1,0 +1,4 @@
+/* Offset for fixed header (80px height) */
+.layout-main {
+  padding-top: 80px;
+}

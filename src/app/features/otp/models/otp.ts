@@ -1,16 +1,15 @@
 export interface Otp {
   id: string;
-  code: string;
-  userId?: string;
-  clientId?: string;
-  expiresAt: string;
+  otp: string;
+  clientId: string;
 }
 
 export interface CreateOtpRequest {
-  userId?: string;
-  clientId?: string;
+  otp: string;
+  clientId: string;
 }
 
 export interface VerifyOtpRequest {
-  code: string;
+  id: string
+  otp: string;
 }

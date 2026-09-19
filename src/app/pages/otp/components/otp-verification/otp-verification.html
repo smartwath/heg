@@ -47,6 +47,7 @@
                     (input)="onInput($event, $index)"
                     (keydown)="onKeyDown($event, $index)"
                     (paste)="onPaste($event)"
+                    (focus)="onFocus($event, $index)"
                     [autofocus]="$index === 0"
                   />
                 }
