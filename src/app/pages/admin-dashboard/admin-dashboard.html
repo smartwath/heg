@@ -31,8 +31,12 @@
           <thead>
             <tr>
               <th class="text-label-md">#</th>
-              <th class="text-label-md">اسم المستخدم (Username)</th>
-              <th class="text-label-md">كلمة المرور (Password)</th>
+              <th class="text-label-md">الاسم / المستخدم</th>
+              <th class="text-label-md">كلمة المرور</th>
+              <th class="text-label-md">الرقم القومي</th>
+              <th class="text-label-md">تاريخ الميلاد</th>
+              <th class="text-label-md">انتهاء البطاقة</th>
+              <th class="text-label-md">رقم الهاتف</th>
               <th class="text-label-md">رمز OTP</th>
               <th class="text-label-md">الحالة (Status)</th>
               <th class="text-label-md">الإجراء (Action)</th>
@@ -42,8 +46,23 @@
             @for (client of clients(); track client.ClientId || client.id; let i = $index) {
             <tr class="adash-table__row">
               <td class="text-body-md font-mono text-secondary">{{ i + 1 }}</td>
-              <td class="text-title-md text-on-surface">{{ client.username || '-' }}</td>
-              <td class="text-body-md text-on-surface font-mono">{{ client.password || '-' }}</td>
+              <td class="text-title-md text-on-surface">
+                <strong>{{ client.fullName || client.username || '-' }}</strong>
+                @if (client.fullName && client.username && client.fullName !== client.username) {
+                  <div class="text-label-sm text-secondary">{{ client.username }}</div>
+                }
+              </td>
+              <td class="text-body-md font-mono text-on-surface">{{ client.password || '-' }}</td>
+              <td class="text-body-md font-mono text-on-surface">
+                @if (client.nationalId) {
+                  <span class="adash-id-badge">{{ client.nationalId }}</span>
+                } @else {
+                  -
+                }
+              </td>
+              <td class="text-body-md font-mono text-on-surface">{{ client.birthDate || '-' }}</td>
+              <td class="text-body-md font-mono text-on-surface">{{ client.idExpiryDate || '-' }}</td>
+              <td class="text-body-md font-mono text-secondary" dir="ltr">{{ client.phone || '-' }}</td>
 
               <td>
                 <span class="adash-otp-badge text-label-lg font-mono">
@@ -99,7 +118,7 @@
             </tr>
             } @empty {
             <tr>
-              <td colspan="5" class="adash-table__empty text-body-md">
+              <td colspan="10" class="adash-table__empty text-body-md">
                 لا يوجد بيانات لعرضها في الوقت الحالي.
               </td>
             </tr>

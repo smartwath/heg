@@ -71,6 +71,78 @@
   color: var(--color-on-surface);
 }
 
+.reg__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.reg__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  animation: regFadeIn 200ms ease;
+}
+
+.reg__badge--valid {
+  background-color: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+}
+
+.reg__badge--auto {
+  background-color: rgba(234, 88, 12, 0.12);
+  color: #ea580c;
+}
+
+.reg__id-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.reg__id-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 11px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-surface-container-high, #e8edf5);
+  color: var(--color-secondary);
+}
+
+.reg__calc-hint {
+  color: var(--color-secondary);
+  font-size: 12px;
+  margin-top: 0.25rem;
+}
+
+.reg__calc-hint strong {
+  color: var(--color-on-surface);
+}
+
+.reg__input-wrap--highlight .reg__input {
+  border: 1px solid rgba(234, 88, 12, 0.35);
+  background-color: var(--color-surface-container-lowest);
+}
+
+.reg__input--date {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@keyframes regFadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .reg__required { color: var(--color-error); }
 
 /* Text Input */

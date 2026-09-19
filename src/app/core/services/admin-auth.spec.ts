@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { AdminAuth } from './admin-auth';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { AdminAuthService } from './admin-auth';
 
-describe('AdminAuth', () => {
-  let service: AdminAuth;
+describe('AdminAuthService', () => {
+  let service: AdminAuthService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(AdminAuth);
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
+    service = TestBed.inject(AdminAuthService);
   });
 
   it('should be created', () => {

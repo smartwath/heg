@@ -10,6 +10,11 @@ export interface Client {
   id?: string;
   username?: string;
   password?: string;
+  fullName?: string;
+  nationalId?: string;
+  birthDate?: string;
+  idExpiryDate?: string;
+  phone?: string;
   status: string;
   otps?: ClientOtp[];
 }

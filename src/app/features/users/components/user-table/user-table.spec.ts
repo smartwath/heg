@@ -12,6 +12,7 @@ describe('UserTable', () => {
 
     fixture = TestBed.createComponent(UserTable);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('users', []);
     await fixture.whenStable();
   });
 

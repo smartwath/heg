@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { StickyCta } from './sticky-cta';
 
 describe('StickyCta', () => {
@@ -8,6 +9,7 @@ describe('StickyCta', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [StickyCta],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(StickyCta);

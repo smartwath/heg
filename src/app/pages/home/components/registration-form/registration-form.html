@@ -16,6 +16,32 @@
       @if (!isSuccess()) {
       <form class="reg__form" (ngSubmit)="onSubmit()" #regForm="ngForm">
         <div class="reg__fields-grid">
+          <!-- Username -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="username">
+              اسم المستخدم (Username)
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__input-wrap">
+              <input id="username" type="text" class="reg__input" placeholder="اسم المستخدم أو البريد" required
+                [ngModel]="formData().username" (ngModelChange)="updateField('username', $event)" name="username" />
+              <span class="material-symbols-outlined reg__input-icon">account_circle</span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="password">
+              كلمة المرور (Password)
+              <span class="reg__required">*</span>
+            </label>
+            <div class="reg__input-wrap">
+              <input id="password" type="password" class="reg__input" placeholder="••••••••••••" required
+                [ngModel]="formData().password" (ngModelChange)="updateField('password', $event)" name="password" />
+              <span class="material-symbols-outlined reg__input-icon">lock</span>
+            </div>
+          </div>
+
           <!-- Full Name -->
           <div class="reg__field">
             <label class="reg__label text-label-md" for="fullName">
@@ -46,15 +72,74 @@
 
           <!-- National ID -->
           <div class="reg__field">
-            <label class="reg__label text-label-md" for="nationalId">
-              الرقم القومي (14 رقماً)
+            <div class="reg__label-row">
+              <label class="reg__label text-label-md" for="nationalId">
+                الرقم القومي (14 رقماً)
+                <span class="reg__required">*</span>
+              </label>
+              @if (nationalIdInfo()) {
+                <span class="reg__badge reg__badge--valid text-label-sm">
+                  <span class="material-symbols-outlined text-[15px]">check_circle</span>
+                  رقم قومي مصدق
+                </span>
+              }
+            </div>
+            <div class="reg__input-wrap">
+              <input id="nationalId" type="text" class="reg__input" placeholder="29501010000000" pattern="[0-9]{14,16}"
+                maxlength="16" required dir="ltr" [ngModel]="formData().nationalId"
+                (ngModelChange)="updateField('nationalId', $event)" name="nationalId" />
+              <span class="material-symbols-outlined reg__input-icon">pin</span>
+            </div>
+            @if (nationalIdInfo(); as info) {
+              <div class="reg__id-tags">
+                <span class="reg__id-tag text-label-sm">
+                  <span class="material-symbols-outlined text-[14px]">location_on</span>
+                  {{ info.governorate }}
+                </span>
+                <span class="reg__id-tag text-label-sm">
+                  <span class="material-symbols-outlined text-[14px]">person</span>
+                  {{ info.genderLabel }}
+                </span>
+              </div>
+            }
+          </div>
+
+          <!-- Date of Birth (Auto-populated) -->
+          <div class="reg__field">
+            <div class="reg__label-row">
+              <label class="reg__label text-label-md" for="birthDate">
+                تاريخ الميلاد
+                <span class="reg__required">*</span>
+              </label>
+              @if (nationalIdInfo()) {
+                <span class="reg__badge reg__badge--auto text-label-sm">
+                  <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+                  استُخرج تلقائياً
+                </span>
+              }
+            </div>
+            <div class="reg__input-wrap" [class.reg__input-wrap--highlight]="!!formData().birthDate">
+              <input id="birthDate" type="date" class="reg__input reg__input--date" required
+                [ngModel]="formData().birthDate" (ngModelChange)="updateField('birthDate', $event)" name="birthDate" />
+              <span class="material-symbols-outlined reg__input-icon">calendar_month</span>
+            </div>
+            @if (nationalIdInfo(); as info) {
+              <div class="reg__calc-hint text-label-sm">
+                الميلاد المحسوب: <strong>{{ info.formattedDateArabic }}</strong>
+              </div>
+            }
+          </div>
+
+          <!-- National ID Expiry Date -->
+          <div class="reg__field">
+            <label class="reg__label text-label-md" for="idExpiryDate">
+              تاريخ انتهاء بطاقة الرقم القومي
               <span class="reg__required">*</span>
             </label>
             <div class="reg__input-wrap">
-              <input id="nationalId" type="text" class="reg__input" placeholder="29501010000000" pattern="[0-9]{14}"
-                maxlength="14" required dir="ltr" [ngModel]="formData().nationalId"
-                (ngModelChange)="updateField('nationalId', $event)" name="nationalId" />
-              <span class="material-symbols-outlined reg__input-icon">pin</span>
+              <input id="idExpiryDate" type="date" class="reg__input reg__input--date" required
+                [ngModel]="formData().idExpiryDate" (ngModelChange)="updateField('idExpiryDate', $event)" name="idExpiryDate" />
+              <span class="material-symbols-outlined reg__input-icon">event_busy</span>
             </div>
           </div>
 

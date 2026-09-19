@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { UserApi } from './user-api';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { UserApiService } from './user-api';
 
-describe('UserApi', () => {
-  let service: UserApi;
+describe('UserApiService', () => {
+  let service: UserApiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UserApi);
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
+    service = TestBed.inject(UserApiService);
   });
 
   it('should be created', () => {
